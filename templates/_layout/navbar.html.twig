@@ -1,0 +1,69 @@
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+			body {
+				background-color: white;
+			}
+			.navbar {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 10px 50px;
+			}
+			
+			.navbar img {
+				height: 100px;
+			}
+			.navbar .nav-buttons {
+				display: flex;
+				gap: 20px;
+			}
+			.nav-buttons .btn {
+				background: linear-gradient(90deg, #000000, #434343);
+				color: white;
+				border-radius: 50px;
+				padding: 10px 20px;
+				font-weight: bold;
+			}
+			.profile {
+				text-align: center;
+			}
+			.profile i {
+				font-size: 40px;
+				color: black;
+			}
+			.profile p {
+				margin: 0;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="navbar">
+			<div class="logos">
+				<img src="{{ asset('images/logoepsi.png') }}" alt="EPSI Logo" style="height: 80px;">
+				<img src="{{ asset('images/logowizz.png') }}" alt="Wizz Logo" style="height: 40px;">
+			</div>
+			<div class="nav-buttons">
+				<button class="btn">
+					<a href="{{ path('app_accueil') }}">Accueil</a>
+				</button>
+				<button class="btn">
+					<a href="{{ path('app_proj_dispo') }}">DashBoard</a>
+				</button>
+				<button class="btn">
+					Support
+				</button>
+			</div>
+			<div class="nav-buttons">
+			<button class="btn">
+				<a href="{{ path('app_logout') }}">Déconnexion</a>
+				</button>
+			</div>
+		</div>
+	</body>
+</html>

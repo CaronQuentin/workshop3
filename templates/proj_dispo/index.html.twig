@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<style>
+		body {
+			background-color: #f5f5f5;
+			font-family: Arial, sans-serif;
+			margin-left: }
+		.sidebar {
+			background-color: #ffffff;
+			padding: 20px;
+			border-radius: 15px;
+			height: 100vh;
+
+		}
+		.sidebar h1 {
+			font-size: 24px;
+			font-weight: bold;
+		}
+		.sidebar img {
+			width: 100px;
+			margin: 20px 0;
+		}
+		.sidebar .btn {
+			width: 55%;
+			height: 50px;
+			margin-bottom: 5%;
+			margin-left: auto;
+			margin-right: auto;
+			border-radius: 20px;
+			background: linear-gradient(90deg, #004aad, #cb6ce6);
+			color: white;
+			font-weight: bold;
+			display: block;
+
+		}
+		.content {
+			padding: 20px;
+		}
+		.project-card {
+			background: linear-gradient(90deg, #004aad, #cb6ce6);
+			color: white;
+			border-radius: 15px;
+			padding: 4%;
+			margin-bottom: 2%;
+			margin-right: 15%;
+		}
+		.project-card h2 {
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.project-card p {
+			font-size: 14px;
+		}
+		.project-card img {
+			width: 100px;
+			margin-right: 3%;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3 sidebar ">
+				<h1>
+					Dashboard
+				</h1>
+				<div class="d-flex align-items-center justify-content-center">
+					<img alt="EPSI Xperience logo" height="auto" src="{{ asset('images/logo.png') }}" width="300"/>
+				</div>
+				
+				<a href="{{ path('app_my_project') }}" class="btn">
+					Mes Projets
+				</a>
+				<a href="{{ path('app_new_project') }}" class="btn">
+					Créer un Projet
+				</a>
+				<button class="btn">
+					Messagerie
+				</button>
+			</div>
+			<div class="col-md-9 content">
+				<h1 class="pb-2">
+					Projets Disponibles
+				</h1>
+				{% if projets is empty %}
+					<p>Page vide</p>
+				{% else %}
+					{% for projet in projets %}
+						<div class="project-card d-flex align-items-center">
+							<img alt="EPSI Xperience logo" height="auto" src="{{ asset('images/' ~ projet.nomimage ~ '.png') }}" width="300"/>
+							<div>
+								<h2>
+									{{ projet.titre }}
+								</h2>
+								<p>
+									{{ projet.description }}
+								</p>
+							</div>
+							<div style="padding-top:15% ; text-align: end;">
+								<form method="post" action="{{ path('app_join_project', {'id_projet': projet.id, 'id_personne': id}) }}">
+									<input type="hidden" name="id_projet" value="{{ projet.id }}">
+									<input type="hidden" name="id_personne" value="{{ id }}">
+									<button type="submit" class="btn btn-primary" style="align-iten:end">
+										Ajouter au panier
+									</button>
+								</form>
+
+							</div>
+						</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</body>{% endblock %}

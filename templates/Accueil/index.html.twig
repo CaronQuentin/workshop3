@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #ffffff;
+
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 3em;
+			margin-bottom: 1em;
+		}
+
+		p {
+			font-size: 1.2em;
+			margin-bottom: 2em;
+		}
+
+		.container {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.card {
+			background-color: #8C4EFF;
+			border-radius: 10px;
+			padding: 2em;
+			width: 200px;
+			margin-bottom: 1em;
+			transition: transform 0.3s ease;
+		}
+
+		.card:hover {
+			transform: scale(1.20);
+		}
+        
+
+		.number {
+			font-size: 2.5em;
+			font-weight: bold;
+		}
+
+		.label {
+			font-size: 1em;
+		}
+	</style>
+
+	<div class="container" style="display: flex; justify-content: center; align-items: center; padding : 12% 0">
+		<div class="texte">
+			<p style="font-size: 3em; color: black;">Connectez-vous aux projets réels et démarrez votre carrière dès aujourd’hui !</p>
+		</div>
+		<img src="{{ asset('images/ordinateur.png') }}" style="flex: 1; max-width: 600px;">
+	</div>
+
+	<div style="background-color: #14172B; color: white; text-align: center;">
+		<div style="padding: 10% 0 ;">
+			<h1 style="font-size: 3em;">Comment fonctionne la<br/>plateforme ?</h1>
+			<ul style="text-align: left; display: inline-block;">
+				<li style="font-size: 1.5em;">Parcourez les projets proposés par les entreprises et les étudiants, postulez à ceux qui<br/>
+					vous intéressent. Sélectionnez un projet qui correspond à vos compétences et vos
+					<br/>aspirations.</li>
+				<li style="font-size: 1.5em;">Une fois votre candidature acceptée ou votre projet en ligne, collaborez via la<br/>
+					plateforme, suivez la progression, et obtenez des retours à chaque étape du projet.</li>
+				<li style="font-size: 1.5em;">Pour les entreprises, publiez vos projets et trouvez des talents parmi les étudiants<br/>
+					qualifiés pour vous aider à les réaliser.</li>
+			</ul>
+
+		</div>
+        
+		<h1 style="font-size: 3em; color: #9340FF">Chiffres Clés</h1>
+        <p style="padding-top:5% ;font-size: 2em;">Découvrez pourquoi <span class="highlight">EPSIXperience</span> devient la plateforme incontournable pour <br/>connecter les étudiants et les entreprises autour de projets innovants.</p>
+
+        <div class="container" style="padding: 10% 0 ;">
+            <div class="card" style="background-color: #9340FF;">
+                <div class="number" id="studentCount">+250</div>
+                <div class="label">Étudiants actifs</div>
+            </div>
+
+
+            <div class="card" style="background-color: #9340FF;">
+                <div class="number">120</div>
+                <div class="label">Projets réalisés</div>
+            </div>
+
+            <div class="card" style="background-color: #9340FF;">
+                <div class="number">95%</div>
+                <div class="label">De satisfaction</div>
+            </div>
+
+			<div class="card" style="background-color: #9340FF;">
+				<div class="number">30</div>
+				<div class="label">Domaines de compétences</div>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// Animation pour le compteur d'étudiants (exemple)
+let targetCount = 250;
+let currentCount = 0;
+let increment = 1;
+let speed = 0.5; // Vitesse d'incrémentation (ms)
+
+const studentCounter = setInterval(() => {
+currentCount += increment;
+document.getElementById("studentCount").textContent = "+" + currentCount;
+
+if (currentCount >= targetCount) {
+clearInterval(studentCounter);
+}
+}, speed);
+	</script>
+{% endblock %}
